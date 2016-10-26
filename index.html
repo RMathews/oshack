@@ -22,27 +22,35 @@
     <div class="container" ng-controller="contentController as contentCtrl">
         <div class="row">
             <div class="col-md-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading"><b> Ask me </b> <small class="pull-right">online</small></div>
-                    <div id="chatBox" class="panel-body">
-                        <div>
-                            <!--<p>{{openMsg.msg}}</p>-->
-                            <div id="conversation">
-                                <div ng-repeat="m in messages" class="clearfix">
-                                    <blockquote  ng-class="{'me pull-right': m.sender=='user', 'you pull-left' : m.sender=='bot'}">
-                                        {{m.text}}</blockquote>
+                <div id="chat">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading"><b> Ask me </b> <small class="pull-right">online</small></div>
+                        <div id="chatBox" class="panel-body">
+                            <div>
+                                <!--<p>{{openMsg.msg}}</p>-->
+                                <div id="conversation">
+                                    <div ng-repeat="m in messages" class="clearfix">
+                                        <blockquote  ng-class="{'me pull-right': m.sender=='user', 'you pull-left' : m.sender=='bot'}">
+                                            {{m.text}}</blockquote>
+                                    </div>
                                 </div>
-                            </div>
-                            <div id="textInput">
-                                <input type="text" ng-model="userMsg"/>
-                                <button ng-click="recieveMsg()">Recieve</button>
-
-                                <input type="text" ng-model="botMsg"/>
-                                <button ng-click="sendMsg()">Send</button>
+                                <div id="textInput">
+                                    <textarea id="textAreaInput" ng-model="userMsg"></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <button ng-click="recieveMsg()">Recieve</button>
+                    <input type="text" ng-model="botMsg"/>
+                    <button ng-click="sendMsg()">Send</button>
                 </div>
+
+
+                <!--<div id="history" ng-include="'history.html'"></div>-->
+                <label>
+                    <input type="checkbox" ng-model="showList" >
+                    Toggle this thing</label>
+                <ng-include src="getList()"></ng-include>
             </div>
         </div>
     </div>
