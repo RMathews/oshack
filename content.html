@@ -10,14 +10,18 @@
 </head>
 <body ng-app="app1" ng-init="openMsg = {msg : 'Hi, how can I help you today?'}">
 <div class="panel-body">
-    <div ng-controller="appCtrl">
+    <div ng-controller="contentController as contentCtrl">
         <p>{{openMsg.msg}}</p>
 
-        <div ng-repeat="m in messages" class="clearfix"><blockquote class="me pull-right">{{m.text}}</blockquote></div>
+        <div ng-repeat="m in messages" class="clearfix">
+            <blockquote  ng-class="{you : m.sender=='you', me : m.sender=='me'}">{{m.text}}</blockquote>
+        </div>
 
         <input type="text" ng-model="userMsg"/>
+        <button ng-click="recieveMsg()">Recieve</button>
 
-        <button ng-click="recieveMsg()">Send</button>
+        <input type="text" ng-model="botMsg"/>
+        <button ng-click="sendMsg()">Send</button>Z
 
     </div>
 
