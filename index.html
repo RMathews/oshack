@@ -29,7 +29,8 @@
                             <!--<p>{{openMsg.msg}}</p>-->
                             <div id="conversation">
                                 <div ng-repeat="m in messages" class="clearfix">
-                                    <blockquote  ng-class="{'me pull-right': m.sender=='user', 'you pull-left' : m.sender=='bot'}">{{m.text}}</blockquote>
+                                    <blockquote  ng-class="{'me pull-right': m.sender=='user', 'you pull-left' : m.sender=='bot'}">
+                                        {{m.text}}</blockquote>
                                 </div>
                             </div>
                             <div id="textInput">
