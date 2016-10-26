@@ -5,7 +5,7 @@ var app1 = angular.module('app1', []);
 
 app1.controller('appCtrl', function($scope) {
 
-    $scope.userMsg = 1;
+    $scope.userMsg = "Help spin VM";
     // Message inbox
     $scope.messages = [];
 
