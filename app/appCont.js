@@ -10,7 +10,10 @@ app1.controller('appCtrl', function($scope) {
     $scope.messages = [];
 
     $scope.recieveMsg = function(){
-        $scope.messages.push($scope.userMsg);
+        var msg = {};
+        msg.time = new Date().getTime();
+        msg.text = $scope.userMsg;
+        $scope.messages.push(msg);
 
     };
 

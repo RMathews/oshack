@@ -13,10 +13,10 @@
     <div ng-controller="appCtrl">
         <p>{{openMsg.msg}}</p>
 
-        <div ng-repeat="msg in messages" class="clearfix"><blockquote class="me pull-right">{{msg}}</blockquote></div>
-
+        <div ng-repeat="m in messages" class="clearfix"><blockquote class="me pull-right">{{m.text}}</blockquote></div>
 
         <input type="text" ng-model="userMsg"/>
+
         <button ng-click="recieveMsg()">Send</button>
 
     </div>
@@ -25,4 +25,4 @@
     <!--<div class="clearfix"><blockquote class="you pull-left">Hello</blockquote></div>-->
 </div>
 </body>
-</html>which node
+</html>
