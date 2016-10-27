@@ -67,7 +67,7 @@ app1.controller('contentController', function($scope) {
                         {"value": "m1.nano", "type": "flavor"},
                         {"value": "m1.xlarge", "type": "flavor"},
                         {"value": "m1.micro", "type": "flavor"}],
-                    button:"False"}
+                    button:"True"}
         $scope.messages.push(msg);
     };
 
