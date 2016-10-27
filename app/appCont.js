@@ -10,7 +10,6 @@ app1.directive('myEnter', function () {
                 scope.$apply(function (){
                     scope.$eval(attrs.myEnter);
                 });
-
                 event.preventDefault();
             }
         });
@@ -23,17 +22,15 @@ app1.directive('scrollToLast', ['$location', '$anchorScroll', function($location
         $location.hash(attrs.scrollToLast);
         $anchorScroll();
     }
-
     return {
         restrict: 'AE',
         scope: {
-
         },
         link: linkFn
     };
 }]);
 
-app1.controller('contentController', function($scope) {
+app1.controller('contentController', function($scope, $http) {
 
     $scope.userMsg = "Angular team meeting notes for this week: Yet more new team members on Material, Universal in core, going to China.";
     $scope.botMsg = "AngularJS is a structural framework for dynamic web apps. It lets you use HTML " +
@@ -49,6 +46,15 @@ app1.controller('contentController', function($scope) {
         msg.sender = 'user';
         msg.text = {message: userMsg, list:[], button:'False'};
         $scope.messages.push(msg);
+
+        $http({
+            url: 'http://172.99.106.89:8080/chat?question=create%20vm',
+            method: "GET",
+            params: {question: "create vm"}
+        }).then(function(response){
+            $scope.mesg = response.message;
+        });
+
         $scope.userMsg = "";
 
     };
