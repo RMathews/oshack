@@ -3,6 +3,36 @@
  */
 var app1 = angular.module('OSHack', []);
 
+app1.directive('myEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.myEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+});
+
+app1.directive('scrollToLast', ['$location', '$anchorScroll', function($location, $anchorScroll){
+
+    function linkFn(scope, element, attrs){
+        $location.hash(attrs.scrollToLast);
+        $anchorScroll();
+    }
+
+    return {
+        restrict: 'AE',
+        scope: {
+
+        },
+        link: linkFn
+    };
+}]);
+
 app1.controller('contentController', function($scope) {
 
     $scope.userMsg = "Angular team meeting notes for this week: Yet more new team members on Material, Universal in core, going to China.";
@@ -10,7 +40,6 @@ app1.controller('contentController', function($scope) {
         "as your template language and lets you extend HTML's syntax to express your application's components clearly and succinctly. ";
     // Message inbox
     $scope.messages = [];
-
 
     $scope.recieveMsg = function(){
         var msg = {};
@@ -30,7 +59,6 @@ app1.controller('contentController', function($scope) {
     };
 
     $scope.getList = function(){
-      return $scope.showList ? "unhistory.html" : "history.html";
+        return $scope.showList ? "unhistory.html" : "history.html";
     };
 });
-
