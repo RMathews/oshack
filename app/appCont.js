@@ -43,15 +43,20 @@ app1.controller('contentController', function($scope) {
 
     $scope.recieveMsg = function(){
         var msg = {};
+        if($scope.userMsg.length <= 0)
+            return;
         msg.time = new Date().getTime();
         msg.sender = 'user';
         msg.text = $scope.userMsg;
         $scope.messages.push(msg);
+        $scope.userMsg = "";
 
     };
 
     $scope.sendMsg = function(){
         var msg = {};
+        if($scope.userMsg.length <= 0)
+            return;
         msg.time = new Date().getTime();
         msg.sender = 'bot';
         msg.text = $scope.botMsg;
