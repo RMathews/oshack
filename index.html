@@ -25,15 +25,18 @@
             <div id="conversation">
                 <div id="chatBox" class="panel-body" scroll="messages">
                     <div class="clearfix" ng-repeat="m in messages" id="post-{{ ::$index }}" scroll-to-last="post-{{ ::$index }}">
-                        <blockquote  ng-class="{'me pull-right': m.sender=='user', 'you pull-left' : m.sender=='bot'}">
-                            {{m.text}}</blockquote>
+                        <div ng-class="'media-right': m.sender=='user', 'media-left' : m.sender=='bot'">
+                        <!--<img class="media-object" src="/images/fem-icon.png" alt="ME">-->
+                        <div ng-class="{'alert alert-success pull-right media-right': m.sender=='user', 'alert alert-info pull-left media-left' : m.sender=='bot'}">
+                            {{m.text}}</div>
                     </div>
                 </div>
             </div>
         </div>
-        <textarea id="textAreaInput" rows="4" type="text" ng-model="userMsg" class="form-control" placeholder="Type here..." my-enter="recieveMsg()"></textarea>
-
-        <button ng-click="recieveMsg()">Recieve</button>
+        <div class="form-group">
+        <textarea id="textAreaInput" rows="4" type="text" ng-model="userMsg" class="form-control"
+                  placeholder="Type here..." my-enter="recieveMsg()"></textarea>
+            </div>
         <input type="text" ng-model="botMsg"/>
         <button ng-click="sendMsg()">Send</button>
     </div>
