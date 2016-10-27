@@ -41,13 +41,13 @@ app1.controller('contentController', function($scope) {
     // Message inbox
     $scope.messages = [];
 
-    $scope.recieveMsg = function(){
+    $scope.recieveMsg = function(userMsg){
         var msg = {};
-        if($scope.userMsg.length <= 0)
+        if(userMsg.length <= 0)
             return;
         msg.time = new Date().getTime();
         msg.sender = 'user';
-        msg.text = $scope.userMsg;
+        msg.text = {message: userMsg, list:[], button:'False'};
         $scope.messages.push(msg);
         $scope.userMsg = "";
 
@@ -59,7 +59,15 @@ app1.controller('contentController', function($scope) {
             return;
         msg.time = new Date().getTime();
         msg.sender = 'bot';
-        msg.text = $scope.botMsg;
+        msg.text = {message: "Sure. Creating VM. But please select a flavor",
+                    list:[{"value": "m1.tiny", "type": "flavor"},
+                        {"value": "m1.small", "type": "flavor"},
+                        {"value": "m1.medium", "type": "flavor"},
+                        {"value": "m1.large", "type": "flavor"},
+                        {"value": "m1.nano", "type": "flavor"},
+                        {"value": "m1.xlarge", "type": "flavor"},
+                        {"value": "m1.micro", "type": "flavor"}],
+                    button:"False"}
         $scope.messages.push(msg);
     };
 
