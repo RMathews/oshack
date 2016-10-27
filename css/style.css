@@ -57,7 +57,7 @@ header #logo {
 #conversation{
     padding-top: 20px;
     float:left;
-    height: 80%;
+    height: 500px;
     width:100%;
     overflow: auto;
 }
@@ -72,7 +72,7 @@ header #logo {
 }
 #textAreaInput {
     width: 100%;
-    height:100%;
+    height:75%;
 }
 #chat{
     float: left;
