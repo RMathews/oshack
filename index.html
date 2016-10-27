@@ -25,11 +25,11 @@
             <div id="conversation">
                 <div id="chatBox" class="panel-body" scroll="messages">
                     <div class="clearfix" ng-repeat="m in messages" id="post-{{ ::$index }}" scroll-to-last="post-{{ ::$index }}">
-                        <div ng-class="'media-right': m.sender=='user', 'media-left' : m.sender=='bot'">
-                            <!--<img class="media-object" src="/images/fem-icon.png" alt="ME">-->
-                            <div ng-class="{'alert alert-success pull-right media-right': m.sender=='user', 'alert alert-info pull-left media-left' : m.sender=='bot'}">
-                                {{m.text}}</div>
-                        </div>
+
+                            <div ng-class="{'alert alert-success pull-right': m.sender=='user', 'alert alert-info pull-left' : m.sender=='bot'}">
+                                {{m.text}} <br/>
+                            <span class="pull-right sentTime">{{m.time | date:'mediumTime'}}</span></div>
+
                     </div>
                 </div>
             </div>
