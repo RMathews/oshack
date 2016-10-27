@@ -46,17 +46,11 @@ app1.controller('contentController', function($scope, $http) {
         msg.sender = 'user';
         msg.text = {message: userMsg, list:[], button:'False'};
         $scope.messages.push(msg);
-
-        $http({
-            url: 'http://172.99.106.89:8080/chat?question=create%20vm',
-            method: "GET",
-            params: {question: "create vm"}
-        }).then(function(response){
-            $scope.mesg = response.message;
+        console.log('called')
+        // jQuery cross domain ajax
+        $.get("http://172.99.106.89:8080/chat?question="+userMsg).done(function (data) {
+             console.log(data);
         });
-
-        $scope.userMsg = "";
-
     };
 
     $scope.sendMsg = function(){
