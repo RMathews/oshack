@@ -22,7 +22,7 @@
     </header>
     <div ng-controller="contentController as contentCtrl">
         <div class="panel panel-primary">
-            <div class="panel-heading"><b> Ask me </b> <small class="pull-right">online</small></div>
+            <div class="panel-heading"><b>OpenStack Assistant</b> <small class="pull-right">online</small></div>
             <div id="conversation">
                 <div id="chatBox" class="panel-body" scroll="messages">
                     <div class="clearfix" ng-repeat="m in messages" id="post-{{ ::$index }}" scroll-to-last="post-{{ ::$index }}">
@@ -30,7 +30,7 @@
                                 {{m.text.message}} <br/>
                                 <div ng-repeat="list in m.text.list">
                                 <span ng-class="{'label label-primary': m.text.button=='True'}"
-                                      ng-click="m.text.button=='True' && recieveMsg(list.value)"> {{list.value}} </span>
+                                      ng-click="m.text.button=='True' && setAPI(m.text.type, list.value)"> {{list.value}} </span>
                                 </div>
                             <span class="pull-right sentTime">{{m.time | date:'mediumTime'}}</span></div>
                     </div>
